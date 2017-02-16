@@ -5,38 +5,25 @@ var _ = require('lodash');
 var News = require('../News/news');
 var Wiki = require('../Wiki/wiki');
 var YouTube = require('../Youtube/youtube');
-var API = require('../../actions/videoapi')
-var Search = require('../Search/search')
+var Search = require('../Search/search');
+var videoApi = require('../../actions/videoApi');
+var newsApi = require('../../actions/newsApi');
+var wikiApi = require('../../actions/wikiApi')
 
 class Dashboard extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {};
+    this.videoApi = new videoApi();
+    this.newsApi = new newsApi();
+    this.wikiApi = new wikiApi();
   }
 
   componentWillMount(){
     this.search()
   }
 
-  componentDidMount(){
-  }
-
-  componentWillReceiveProps(nextProps){
-
-  }
-
-  componentWillUpdate(nextProps, nextState){
-
-  }
-
-  componentDidUpdate(){
-
-  }
-
-  componentWillUnmount(){
-
-  }
 
   updateSearch(input){
     this.search(input);
@@ -52,7 +39,10 @@ class Dashboard extends React.Component {
   }
 
   search(query='Donald Trump'){
-    this.searchNews(query);
+    this.newsApi.cancel();
+    this.newsApi.call(query, (headlines) => this.setState({headlines: headlines}));
+
+    // this.searchNews(query);
     this.searchWiki(query);
     this.searchYouTube(query);
   }
@@ -71,24 +61,24 @@ class Dashboard extends React.Component {
     });
   }
 
-  searchNews(query){
-    var key = '66b5b9c2-d33d-4e84-b5de-5f73c780b6c4'
-    var url = `http://content.guardianapis.com/search?show-elements=all&q=${query}&api-key=${key}`;
-    Request.get(url).then((response) => {
-      this.setState({
-        headlines: response.body.response.results
-      });
-    });
-  }
+  // searchNews(query){
+  //   var key = '66b5b9c2d33d4e84b5de5f73c780b6c4'
+  //   var url = `http://content.guardianapis.com/search?showelements=all&q=${query}&apikey=${key}`;
+  //   Request.get(url).then((response) => {
+  //     this.setState({
+  //       headlines: response.body.response.results
+  //     });
+  //   });
+  // }
 
   searchYouTube(query){
     var that = this;
-    var api = new API(query);
-    var res = api.main();
+    // how to pass query to video
+    var res = this.videoApi.main(query);
 
     setTimeout(function(){ 
       that.setState({
-        video: api.response
+        video: res.response
       })
       console.log('done')
     }, 2000);
