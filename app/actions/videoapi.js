@@ -1,24 +1,66 @@
 class VideoAPI {
 
-  constructor(query){
-    this.response = null;
-    this.query = query;
-  }
-  
-  main(){
-    gapi.load('client', this.onClientLoad.bind(this));
+  constructor(){
+    gapi.load('client', () => 
+      gapi.client.load('youtube', 'v3', () => gapi.client.setApiKey('AIzaSyDcB7YTBZclI4Ylr1qtZchrm5Ce8-EJA1o')
+      )
+    )
   }
 
-  showResponse(response) {
+  
+  call(query, callBack){
+    function _call(retry, context){
+
+      if(retry <= 0){
+        return
+      } else {
+
+        if(gapi.client === undefined || gapi.client.youtube === undefined){
+          if(retry === 1){
+            return
+          }
+          setTimeout(function(){
+             _call(retry-1, context)
+          }, 2000)
+        } else {
+
+          context.id_request = gapi.client.youtube.search.list({
+              part: 'snippet',
+              q:query
+            });
+
+          context.id_request.execute(function(videoId){
+            console.log(videoId)
+            context.iframe_request = gapi.client.youtube.videos.list({
+              part: 'id, player',
+              id: videoId['items'][0]['id']['videoId']})
+            context.iframe_request.execute(function(response){
+              var iframe_src = context.parseResponse(response)
+              callBack(iframe_src)
+            })
+          })
+        }
+      }
+    }
+    _call(3, this)
+  }
+
+  // cancel(){
+
+  // }
+
+  parseResponse(response) {
+    console.log(response)
     var res = response['items'][0]['player']['embedHtml'];
     
     var that = this;
 
     var regEx = /(src)=["']([^"']*)["']/gi;
     res.replace(regEx, function(a, t, v){
-      that.response = v
+      that.parsed = v
     })
-
+    
+    return that.parsed
   }
 
   onClientLoad(){

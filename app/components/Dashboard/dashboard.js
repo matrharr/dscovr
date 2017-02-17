@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
-    this.videoApi = new videoApi();
+    this.videoApi = new videoApi(()=>console.log('done'));
     this.newsApi = new newsApi();
     this.wikiApi = new wikiApi();
   }
@@ -39,42 +39,19 @@ class Dashboard extends React.Component {
   }
 
   search(query='Donald Trump'){
-    this.newsApi.cancel();
+
     this.newsApi.call(query, (headlines) => this.setState({headlines: headlines}));
-
+    this.wikiApi.call(query, (entry) => this.setState({entry:entry}));
+    this.videoApi.call(query, (video) => this.setState({video:video}));
     // this.searchNews(query);
-    this.searchWiki(query);
-    this.searchYouTube(query);
+    // this.searchWiki(query);
+    // this.searchYouTube(query);
   }
-
-  searchWiki(query){
-    var url = `http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=${query}&callback=?`;
-    Request.get(url)
-      .use(jsonp)
-      .end((err, res) => {
-        if (err) {
-          console.log(err);
-        } else {
-          
-          this.setState({ entry: res.body.parse.text['*'] });
-        }
-    });
-  }
-
-  // searchNews(query){
-  //   var key = '66b5b9c2d33d4e84b5de5f73c780b6c4'
-  //   var url = `http://content.guardianapis.com/search?showelements=all&q=${query}&apikey=${key}`;
-  //   Request.get(url).then((response) => {
-  //     this.setState({
-  //       headlines: response.body.response.results
-  //     });
-  //   });
-  // }
 
   searchYouTube(query){
     var that = this;
     // how to pass query to video
-    var res = this.videoApi.main(query);
+    var res = this.videoApi.call(query);
 
     setTimeout(function(){ 
       that.setState({
