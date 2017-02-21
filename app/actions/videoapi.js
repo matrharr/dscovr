@@ -50,7 +50,6 @@ class VideoAPI {
   // }
 
   parseResponse(response) {
-    console.log(response)
     var res = response['items'][0]['player']['embedHtml'];
     
     var that = this;

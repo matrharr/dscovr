@@ -9,7 +9,7 @@ class Wiki extends React.Component {
   }
 
   render(){
-
+    console.log(this.props.entry)
     return <div style={styles}>
       <div>
         {ReactHtmlParser(this.props.entry)}

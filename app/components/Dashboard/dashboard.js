@@ -1,27 +1,25 @@
 var React = require('react');
-var Request = require('superagent');
-let jsonp = require('superagent-jsonp')
 var _ = require('lodash');
 var News = require('../News/news');
 var Wiki = require('../Wiki/wiki');
-var YouTube = require('../Youtube/youtube');
+var YouTube = require('../Video/video');
 var Search = require('../Search/search');
 var videoApi = require('../../actions/videoApi');
 var newsApi = require('../../actions/newsApi');
-var wikiApi = require('../../actions/wikiApi')
+var wikiApi = require('../../actions/wikiApi');
 
 class Dashboard extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {};
-    this.videoApi = new videoApi(()=>console.log('done'));
+    this.videoApi = new videoApi();
     this.newsApi = new newsApi();
     this.wikiApi = new wikiApi();
   }
 
   componentWillMount(){
-    this.search()
+    this.search();
   }
 
 
@@ -39,27 +37,9 @@ class Dashboard extends React.Component {
   }
 
   search(query='Donald Trump'){
-
     this.newsApi.call(query, (headlines) => this.setState({headlines: headlines}));
     this.wikiApi.call(query, (entry) => this.setState({entry:entry}));
     this.videoApi.call(query, (video) => this.setState({video:video}));
-    // this.searchNews(query);
-    // this.searchWiki(query);
-    // this.searchYouTube(query);
-  }
-
-  searchYouTube(query){
-    var that = this;
-    // how to pass query to video
-    var res = this.videoApi.call(query);
-
-    setTimeout(function(){ 
-      that.setState({
-        video: res.response
-      })
-      console.log('done')
-    }, 2000);
-
   }
 
 
