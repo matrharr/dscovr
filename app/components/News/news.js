@@ -31,8 +31,8 @@ class News extends React.Component {
       responsive: [{
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          vertical: false,
+          slidesToShow: 3,
+          // vertical: false,
           slidesToScroll: 1
         }
       }]
@@ -54,9 +54,11 @@ var styles = {
   div: {
     '@media (max-width: 1000px)': {
       width: '100%',
-      paddingTop: '3%'
+      paddingTop: '3%',
+      paddingBottom: '0px'
     },
     paddingTop: '200px',
+    paddingBottom: '100px',
     height: '50px',
     float: 'right',
     width: '49%',
