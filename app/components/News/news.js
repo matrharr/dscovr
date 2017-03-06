@@ -1,6 +1,6 @@
 var React = require('react');
-// var styles = require('./newsStyles');
 var Radium = require('radium');
+var Slider = require('react-slick');
 
 
 class News extends React.Component {
@@ -10,13 +10,40 @@ class News extends React.Component {
   }
 
   render(){
-    var headlines = _.map(this.props.headlines, (h) => {
-      return <li style={styles.li} key={h.id}><a style={styles.a} href={h.webUrl}>{h.webTitle}</a></li>;
-    });
-    return <div className="news" style={styles.div}>
-      <h1 style={styles.h1} >From: The Guardian</h1>
-      <ul>{headlines}</ul>
+    var headlines;
+    if(this.props.headlines === undefined){
+      headlines = <div>No data</div>
+    } else {
+
+      headlines = _.map(this.props.headlines, (h) => {
+        return <div style={styles.card} key={h.id}><li style={styles.li}><a style={styles.a} href={h.webUrl}>{h.webTitle}</a></li></div>;
+      });
+    }
+
+    var settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      vertical: true,
+      arrows: false,
+      responsive: [{
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }]
+    };
+
+    return (
+    <div style={styles.div}>
+      <Slider className='override' {...settings}>
+        {headlines}
+      </Slider>
     </div>
+    );
     
   }
 
@@ -27,26 +54,33 @@ var styles = {
     '@media (max-width: 1000px)': {
       width: '100%',
     },
-
+    paddingTop: '5%',
+    height: '50px',
     float: 'right',
     width: '49%',
-    border: '.5px solid black',
     height: '366px',
   },
 
-  h1: {
-    textAlign: 'center'
-  },
-
   li: {
-    fontSize: '23px',
-    
+    // backgroundColor: '#428bca',  
+    fontSize: '18px',
+    textAlign: 'center',
+    height: '70px',
+    paddingTop: '5%',
+    border: '8px solid #428bca'
   },
 
   a: {
-    color: 'black'
-  }
-}
+    color: 'black',
+    textDecoration: 'none'
+  },
 
+  card: {
+    backgroundColor: 'white',
+    padding: '2px'
+  },
+
+
+}
 
 module.exports = Radium(News);

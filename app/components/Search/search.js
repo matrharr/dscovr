@@ -14,10 +14,12 @@ class Search extends React.Component {
 
   render(){
 
-    return <div style={styles.div}>
-      <h1>DscovR</h1>
-      <h3>watch - read - learn</h3>
-      <input style={styles.input} onChange={this.handleChange.bind(this)} type="text"/>
+    return <div>
+      <h1 style={styles.h1}>DscovR</h1>
+      <div style={styles.div}>
+        <h3 style={styles.h3}>Find video, news, facts</h3>
+        <input style={styles.input} placeholder='Type Something!' onChange={this.handleChange.bind(this)} type="text"/>
+      </div>
     </div>
   }
 

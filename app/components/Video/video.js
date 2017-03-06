@@ -1,5 +1,7 @@
 var React = require('react');
-var styles = require('./videoStyles');
+var Radium = require('radium');
+
+
 
 class YouTube extends React.Component {
   
@@ -9,16 +11,27 @@ class YouTube extends React.Component {
 
   render(){
 
-    return <div style={styles}>
+    return <div style={styles.div}>
       <iframe width="640" height="360" src={ this.props.video} allowFullScreen></iframe>
     </div>
   }
 
 }
 
+var styles = {
+  div: {
+    '@media (max-width: 1000px)': {
+      width: '100%'
+    },
+    textAlign: 'center',
+    float: 'left',
+    width: '49%',
+    // border: '.5px solid black'
+  }
+}
 
 
 
 
 
-module.exports = YouTube;
+module.exports = Radium(YouTube);

@@ -1,4 +1,5 @@
 module.exports = {
   clear: 'both',
-  border: '.5px solid black'
+  
+  // border: '.5px solid black'
 }
