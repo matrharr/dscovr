@@ -24,14 +24,15 @@ class News extends React.Component {
       dots: true,
       infinite: false,
       speed: 500,
-      slidesToShow: 2,
-      slidesToScroll: 2,
+      slidesToShow: 3,
+      slidesToScroll: 3,
       vertical: true,
       arrows: false,
       responsive: [{
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          vertical: false,
           slidesToScroll: 1
         }
       }]
@@ -53,8 +54,9 @@ var styles = {
   div: {
     '@media (max-width: 1000px)': {
       width: '100%',
+      paddingTop: '3%'
     },
-    paddingTop: '5%',
+    paddingTop: '200px',
     height: '50px',
     float: 'right',
     width: '49%',
@@ -62,10 +64,9 @@ var styles = {
   },
 
   li: {
-    // backgroundColor: '#428bca',  
     fontSize: '18px',
     textAlign: 'center',
-    height: '70px',
+    height: '60px',
     paddingTop: '5%',
     border: '8px solid #428bca'
   },
@@ -77,7 +78,7 @@ var styles = {
 
   card: {
     backgroundColor: 'white',
-    padding: '2px'
+    // padding: '2px'
   },
 
 

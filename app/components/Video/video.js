@@ -26,6 +26,7 @@ var styles = {
     textAlign: 'center',
     float: 'left',
     width: '49%',
+    paddingTop: '200px'
     // border: '.5px solid black'
   }
 }

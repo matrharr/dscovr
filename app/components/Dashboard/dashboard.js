@@ -16,10 +16,12 @@ class Dashboard extends React.Component {
     this.videoApi = new videoApi();
     this.newsApi = new newsApi();
     this.wikiApi = new wikiApi();
+    this.firstQuery = ['Donald Trump', 'Albert Einstein', 'Isaac Newton', 'Google', 'Krusty the Clown', 'James Joyce', 'Batman', 'Facebook', 'JK Rowling', 'J. K. Rowling', 'Barack Obama']
   }
 
   componentWillMount(){
-    this.search();
+    var query = this.firstQuery[Math.floor(Math.random() * this.firstQuery.length)];
+    this.search(query);
   }
 
 
@@ -36,7 +38,7 @@ class Dashboard extends React.Component {
     </div>
   }
 
-  search(query='Donald Trump'){
+  search(query){
     this.newsApi.call(query, (headlines) => this.setState({headlines: headlines}));
     this.wikiApi.call(query, (entry) => this.setState({entry:entry}));
     this.videoApi.call(query, (video) => this.setState({video:video}));

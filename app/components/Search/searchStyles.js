@@ -1,29 +1,30 @@
 module.exports = {
   div: {
-  paddingTop: '50px',
-  paddingBottom: '50px',
-  textAlign: 'center',
+  backgroundColor: '#5bc0de',
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  paddingBottom: '30px',
+  marginTop: '0',
+  marginLeft: '0',
+  zIndex: '999',
+  width: '100%',
+  height: '50px',
   },
   h3: {
     fontFamily: 'Arial'
   },
   input: {
-    width: '654px',
+    width: '40%',
     height: '30px',
     fontSize: '18px',
+    display: 'inline-block',
+    marginLeft: '-275px'
   },
   h1: {
   fontFamily: 'Arial',
-  textAlign: 'center',
-  backgroundColor: '#5bc0de',
-  position: 'fixed',
-  top: '0',
-  left: '0',
-  paddingBottom: '20px',
-  marginTop: '0',
-  marginLeft: '0',
-  zIndex: '999',
-  width: '100%',
-  height: '30px',
-}
+  display: 'inline-block',
+  width: '40%',
+  marginLeft: '425px'
+  }
 }
