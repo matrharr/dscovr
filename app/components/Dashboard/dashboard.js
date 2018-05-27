@@ -1,4 +1,4 @@
-import videoAPI from '../../actions/videoAPI';
+import videoAPI from '../../actions/videoApi';
 import newsApi from '../../actions/newsApi';
 import wikiApi from '../../actions/wikiApi';
 import News from '../News/news';
