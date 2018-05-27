@@ -1,4 +1,4 @@
-class videoAPI {
+class videoApi {
 
   constructor(){
     gapi.load('client', () =>
@@ -103,7 +103,7 @@ class videoAPI {
   }
 }
 
-export default videoAPI ;
+export default videoApi ;
 
 
 

@@ -1,4 +1,4 @@
-import videoAPI from '../../actions/videoApi';
+import videoApi from '../../actions/videoApi';
 import newsApi from '../../actions/newsApi';
 import wikiApi from '../../actions/wikiApi';
 import News from '../News/news';
@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
-    this.videoApi = new videoAPI();
+    this.videoApi = new videoApi();
     this.newsApi = new newsApi();
     this.wikiApi = new wikiApi();
     this.firstQuery = ['Donald Trump', 'Albert Einstein', 'Isaac Newton', 'Google', 'Krusty the Clown', 'James Joyce', 'Batman', 'Facebook', 'JK Rowling', 'J. K. Rowling', 'Barack Obama']
