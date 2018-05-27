@@ -1,4 +1,4 @@
-var HTMLWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
@@ -8,7 +8,7 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 module.exports = {
   entry: __dirname + '/app/index.js',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -18,7 +18,7 @@ module.exports = {
             presets:['es2015','react']
           }
       }
-      
+
     ]
   },
   output: {
@@ -30,5 +30,6 @@ module.exports = {
           tls: 'empty',
           child_process: 'empty'
         },
-  plugins: [HTMLWebpackPluginConfig]
+  plugins: [HTMLWebpackPluginConfig],
+  mode: 'development',
 };

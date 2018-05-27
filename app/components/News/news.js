@@ -1,10 +1,10 @@
+import Slider from 'react-slick';
 var React = require('react');
-var Radium = require('radium');
-var Slider = require('react-slick');
+var Radium = require('radium').default;
 
 
 class News extends React.Component {
-  
+
   constructor(){
     super();
   }
@@ -39,13 +39,13 @@ class News extends React.Component {
     };
 
     return (
-    <div style={styles.div}>
-      <Slider className='override' {...settings}>
-        {headlines}
-      </Slider>
-    </div>
+        <div style={styles.div}>
+          <Slider className='override' {...settings}>
+            {headlines}
+          </Slider>
+        </div>
     );
-    
+
   }
 
 }
@@ -86,4 +86,4 @@ var styles = {
 
 }
 
-module.exports = Radium(News);
+export default Radium(News);

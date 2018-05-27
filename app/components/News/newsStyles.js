@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   div: {
     float: 'right',
     width: '49%',
@@ -12,7 +12,7 @@ module.exports = {
 
   li: {
     fontSize: '23px',
-    
+
   },
 
   a: {

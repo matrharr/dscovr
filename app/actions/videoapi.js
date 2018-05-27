@@ -1,13 +1,13 @@
-class VideoAPI {
+class videoAPI {
 
   constructor(){
-    gapi.load('client', () => 
+    gapi.load('client', () =>
       gapi.client.load('youtube', 'v3', () => gapi.client.setApiKey('AIzaSyDcB7YTBZclI4Ylr1qtZchrm5Ce8-EJA1o')
       )
     )
   }
 
-  
+
   call(query, callBack){
     function _call(retry, context){
 
@@ -51,27 +51,27 @@ class VideoAPI {
 
   parseResponse(response) {
     var res = response['items'][0]['player']['embedHtml'];
-    
+
     var that = this;
 
     var regEx = /(src)=["']([^"']*)["']/gi;
     res.replace(regEx, function(a, t, v){
       that.parsed = v
     })
-    
+
     return that.parsed
   }
 
   onClientLoad(){
     gapi.client.load('youtube', 'v3', this.onYouTubeApiLoad.bind(this));
-    
+
   }
 
   onYouTubeApiLoad(){
     gapi.client.setApiKey('AIzaSyDcB7YTBZclI4Ylr1qtZchrm5Ce8-EJA1o');
 
     this.collectId();
-    
+
   }
 
   collectId(){
@@ -103,7 +103,7 @@ class VideoAPI {
   }
 }
 
-module.exports = VideoAPI;
+export default videoAPI ;
 
 
 
@@ -117,7 +117,7 @@ module.exports = VideoAPI;
 //   constructor(){
 //     this.response = ''
 //   }
-  
+
 //   main(query){
 //     gapi.load('client',function(){
 //       gapi.client.load('youtube', 'v3', function(){
@@ -125,7 +125,7 @@ module.exports = VideoAPI;
 //       });
 //     });
 
-//     setTimeout(function(){ 
+//     setTimeout(function(){
 //     var request = gapi.client.youtube.search.list({
 //         part: 'snippet',
 //         q:query
@@ -141,7 +141,7 @@ module.exports = VideoAPI;
 //       request.execute(function(response){
 //         var res = response['items'][0]['player']['embedHtml']
 //         // var responseString = JSON.stringify(response, '', 2);
-        
+
 //         this.response = res
 //       });
 //     });
@@ -150,5 +150,3 @@ module.exports = VideoAPI;
 // }
 
 // module.exports = VideoAPI;
-
-

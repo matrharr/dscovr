@@ -3,20 +3,20 @@ import ReactHtmlParser from 'react-html-parser';
 var styles = require('./wikiStyles')
 
 class Wiki extends React.Component {
-  
+
   constructor(){
     super();
   }
 
   render(){
-    return <div style={styles}>
+    return (<div style={styles}>
       <hr/ >
       <div>
         {ReactHtmlParser(this.props.entry)}
       </div>
-    </div>
+    </div>)
   }
 
 }
 
-module.exports = Wiki;
+export default Wiki;

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   div: {
   backgroundColor: '#5bc0de',
   position: 'fixed',

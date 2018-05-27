@@ -1,13 +1,13 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {StyleRoot} from 'radium';
 
 
-var App = require('./components/Dashboard/dashboard');
+import Dashboard from './components/Dashboard/dashboard';
 
 ReactDOM.render(
   <StyleRoot>
-  <App />
+    <Dashboard />
   </StyleRoot>,
   document.getElementById('app')
 );

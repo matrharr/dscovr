@@ -5,7 +5,7 @@ var htmlParser = require('html-parser')
 class WikiApi {
 
   constructor() {
-    
+
   }
 
   call(query, callBack) {
@@ -30,7 +30,7 @@ class WikiApi {
     console.log(body.length)
     var parsedRes;
     if (body.length < 1000){
-      // redirect  
+      // redirect
       var new_query = htmlParser.parse(body, {
         attribute: function(name, value) {
           if(name === 'title'){
@@ -64,4 +64,4 @@ class WikiApi {
 }
 
 
-module.exports = WikiApi;
+export default WikiApi;

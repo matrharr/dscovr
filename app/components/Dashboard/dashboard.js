@@ -1,19 +1,19 @@
-var React = require('react');
-var _ = require('lodash');
-var News = require('../News/news');
-var Wiki = require('../Wiki/wiki');
-var YouTube = require('../Video/video');
-var Search = require('../Search/search');
-var videoApi = require('../../actions/videoApi');
-var newsApi = require('../../actions/newsApi');
-var wikiApi = require('../../actions/wikiApi');
+import videoAPI from '../../actions/videoAPI';
+import newsApi from '../../actions/newsApi';
+import wikiApi from '../../actions/wikiApi';
+import News from '../News/news';
+import Wiki from '../Wiki/wiki';
+import YouTube from '../Video/video';
+import Search from '../Search/search';
+const React = require('react');
+const _ = require('lodash');
 
 class Dashboard extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {};
-    this.videoApi = new videoApi();
+    this.videoApi = new videoAPI();
     this.newsApi = new newsApi();
     this.wikiApi = new wikiApi();
     this.firstQuery = ['Donald Trump', 'Albert Einstein', 'Isaac Newton', 'Google', 'Krusty the Clown', 'James Joyce', 'Batman', 'Facebook', 'JK Rowling', 'J. K. Rowling', 'Barack Obama']
@@ -30,12 +30,12 @@ class Dashboard extends React.Component {
   }
 
   render(){
-    return <div>
+    return (<div>
       <Search onChange={this.updateSearch.bind(this)} />
       <YouTube video={this.state.video} />
       <News headlines={this.state.headlines} />
       <Wiki entry={this.state.entry} />
-    </div>
+    </div>)
   }
 
   search(query){
@@ -47,4 +47,4 @@ class Dashboard extends React.Component {
 
 }
 
-module.exports = Dashboard;
+export default Dashboard;

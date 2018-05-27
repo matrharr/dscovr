@@ -32,4 +32,4 @@ class NewsApi {
 }
 
 
-module.exports = NewsApi;
+export default NewsApi;

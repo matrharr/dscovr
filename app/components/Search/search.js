@@ -1,10 +1,10 @@
 var React = require('react');
 
-var Radium = require('radium');
+var Radium = require('radium').default;
 
 
 class Search extends React.Component {
-  
+
   constructor(){
     super();
   }
@@ -18,7 +18,7 @@ class Search extends React.Component {
 
     return (
       <div style={styles.div}>
-        <h1 style={styles.h1}>DscovR</h1>
+        <h1 style={styles.h1}>Discovr</h1>
         <input style={styles.input} placeholder='Search for something!' onChange={this.handleChange.bind(this)} type="text"/>
       </div>
     )
@@ -69,4 +69,4 @@ var styles = {
   }
 }
 
-module.exports = Radium(Search);
+export default Radium(Search);

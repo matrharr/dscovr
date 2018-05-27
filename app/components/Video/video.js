@@ -1,19 +1,19 @@
 var React = require('react');
-var Radium = require('radium');
+var Radium = require('radium').default;
 
 
 
 class YouTube extends React.Component {
-  
+
   constructor(){
     super();
   }
 
   render(){
 
-    return <div style={styles.div}>
+    return (<div style={styles.div}>
       <iframe width="640" height="360" src={ this.props.video} allowFullScreen></iframe>
-    </div>
+    </div>)
   }
 
 }
@@ -36,4 +36,4 @@ var styles = {
 
 
 
-module.exports = Radium(YouTube);
+export default Radium(YouTube);
