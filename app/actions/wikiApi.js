@@ -9,7 +9,7 @@ class WikiApi {
   }
 
   call(query, callBack) {
-    var url = `http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=${query}&callback=?`;
+    var url = `https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=${query}&callback=?`;
     Request.get(url)
       .use(jsonp)
       .end((err, res) => {

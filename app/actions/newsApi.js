@@ -10,7 +10,7 @@ class NewsApi {
   call(query, callBack) {
     this.cancel();
 
-    var url = `http://content.guardianapis.com/search?show-elements=all&q=${query}&api-key=${this.key}`;
+    var url = `https://content.guardianapis.com/search?show-elements=all&q=${query}&api-key=${this.key}`;
     this.req = Request.get(url);
 
     this.req.then((response) => {
