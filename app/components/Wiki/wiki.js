@@ -4,18 +4,19 @@ var styles = require('./wikiStyles')
 
 class Wiki extends React.Component {
 
-  constructor(){
-    super();
-  }
+    constructor(){
+        super();
+    }
 
-  render(){
-    return (<div style={styles}>
-      <hr/ >
-      <div>
-        {ReactHtmlParser(this.props.entry)}
-      </div>
-    </div>)
-  }
+    render(){
+        return (
+            <div style={styles}>
+                <div>
+                    {ReactHtmlParser(this.props.entry)}
+                </div>
+            </div>
+        )
+    }
 
 }
 

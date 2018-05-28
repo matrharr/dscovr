@@ -57,7 +57,7 @@ var styles = {
       paddingTop: '3%',
       paddingBottom: '0px'
     },
-    paddingTop: '200px',
+    paddingTop: '50px',
     paddingBottom: '100px',
     height: '50px',
     float: 'right',

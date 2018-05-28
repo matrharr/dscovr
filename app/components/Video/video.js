@@ -26,7 +26,7 @@ var styles = {
     textAlign: 'center',
     float: 'left',
     width: '49%',
-    paddingTop: '200px',
+    paddingTop: '50px',
     paddingBottom: '100px'
     // border: '.5px solid black'
   }
