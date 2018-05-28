@@ -17,7 +17,7 @@ class Search extends React.Component {
     render(){
         return (
             <div style={styles.div}>
-                <h1 style={styles.h1}><img style={{width:"300px"}}src="app/img/logo_teal.png"></img></h1>
+                <h1 style={styles.h1}><img style={{width:"300px"}}src="../../img/logo_teal.png"></img></h1>
                 <div>
                     <h3 style={styles.h3}>Find relevant videos, news and wiki!</h3>
                     <input style={styles.input} placeholder='Search something...' onChange={this.handleChange.bind(this)} type="text"/>
